@@ -12,8 +12,7 @@ function runJob(context, req, res) {
     console.log('reading team urls ...')
     rootRef.child('teamUrls').once('value', function(teams) {
         teams.forEach(function(team) {
-          updateTeamStatus(team.key(), team.val().url)
-
+          updateTeamStatus(team.key(), team.val().url, rootRef.child("teams"))
         })
     })
     if (res) res.status(200).send(teamUrls.toString())
@@ -28,9 +27,13 @@ function updateTeamStatus(teamKey, teamEndpoint, dbRef) {
   request(teamEndpoint, function (error, response, data) {
     if (!error && response.statusCode == 200) {
       console.log(data)
-      dbRef.set(teamKey, data)
+      dbRef.child(teamKey).set(JSON.parse(data), function(){
+        console.log("successfully updated data for " + teamKey)
+      })
     } else {
-      dbRef.set(teamKey, {"error": response.statusCode})
+      console.log("got an error when calling endpoint from " + teamKey + "with response code " + response.code)
+      console.log(error)
+      dbRef.child(teamKey).set({"error": response.statusCode})
     }
   })
 }
@@ -46,6 +49,7 @@ function initializeFirebase(context) {
   return ref
 }
 
-if(process.env.CONUHACKS_LOCAL === 1){
+if(process.env.CONUHACKS_LOCAL === "1"){
+  console.log("running in local mode")
   runJob({data:{}}, null, null)
 }
