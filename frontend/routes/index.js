@@ -13,9 +13,9 @@ router.get('/register', function(req, res, next) {
 
 router.post('/register', function(req, res) {
   firebase.createTeam(req.body.url).then(function() {
-    res.redirect('/');
+    res.render('success', {title: 'Yay!', message: 'Your team should show up on the listing page shortly!'});
   }, function() {
-    res.render('error', {message: 'Oh no :('});
+    res.render('error', {title: 'Something broke', message: 'Oh no :('});
   });
 });
 

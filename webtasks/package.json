@@ -1,0 +1,14 @@
+{
+  "name": "webtasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "GetEndpoints.js",
+  "dependencies": {
+    "firebase": "^2.2.5",
+    "request": "^2.56.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
