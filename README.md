@@ -30,16 +30,26 @@ The response you return should be in the following format:
 {
 	// These two fields are mandatory. The rest is optional!
 	teamName: "Your team name",
+
+	// Cheese!
+	teamPicture: "http://imgur.com/yourteam.jpg",
+
 	projectName: "Your project name",     //
 
 	// Make it square ideally
 	projectPicture: "http://imgur.com/yourproject.jpg",
 
-	// Cheese!
-	teamPicture: "http://imgur.com/yourteam.jpg",
+	projectDescription: "Lorem ipsum dolor sit amet, te delectus pertinax referrentur qui. Utamur singulis disputando duo et, est ad debet graeco ancillae, cu appareat quaestio cum. Et eos modus primis reformidans, eum an fastidii fabellas. Euripidis vulputate te sea, ea nec vivendum postulant. Ea eam erant saperet, et veri liber populo vis. Et sonet mollis docendi duo."
 
 	// We fully understand that this URL will be broken most of the time :)
 	projectUrl: "http://yourproject.com",
+
+	//your stack
+	technology: [
+		"React",
+		"Node.js",
+		"MongoDB"
+	]
 
 	// Fill this array up as needed
 	members: [{
@@ -54,4 +64,24 @@ The response you return should be in the following format:
 ```
 
 - Images may be in any web compatible format. Animated .gif anyone? :)
-- Please, nothing offensive. Remember the Major League Hacking [code of conduct](http://static.mlh.io/docs/mlh-code-of-conduct.pdf).
+- Please, nothing offensive. Remember the Major League Hacking [code of conduct](http://static.mlh.io/docs/mlh-code-of-conduct.pdf
+
+## Marketplace (Frontend)
+
+Here is the how to run the marketplace
+
+Go into 
+
+`cd frontend`
+
+Install npm dependencies
+
+`npm install`
+
+Running the project
+
+`npm start`
+
+or with DEBUG info 
+
+`set DEBUG=myapp:* & npm start`
