@@ -66,6 +66,8 @@ The response you return should be in the following format:
 
 ## Marketplace (Frontend)
 
+Here is the how to run the marketplace
+
 Go into 
 
 `cd frontend`
