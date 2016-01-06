@@ -86,27 +86,13 @@ Set your firebase secret
 
 Running the project
 
-`npm start`
-
-or with DEBUG info
-
-`set DEBUG=myapp:* & npm start`
+`gulp start`
 
 server is now up and running
 
 `http://localhost:3000/`
 
 #### React listing app
-
-Here is the how rebuild react listing app
-
-Go into
-
-`cd frontend`
-
-Install npm dependencies
-
-`npm install`
 
 Rebuilding the app
 
