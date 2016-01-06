@@ -15,13 +15,23 @@ class Fish extends React.Component {
 
   render() {
     var details = this.props.details;
-    //var isAvailable = (details.status === 'available' ? true : false);
+
+    var idClasses = 'adb-id adb-id__logo adb-id__sq_large adb-id__editable adb-myapp--image adb-id__launchable';
+    var inactiveIcon = '';
+
+    if (!details.active) {
+      idClasses += ' adb-is-disabled';
+      inactiveIcon = <i className="adb-icon__error adb-icon_alert adb-icon_alert__error"></i>
+    }
+
     return (
         <div className="adb-tile adb-myapp">
-          <div className="adb-id adb-id__logo adb-id__sq_large adb-id__editable adb-myapp--image">
+          <div className={idClasses}>
             <img className="adb-id--img" src={details.projectPicture} />
           </div>
-          <p>{details.projectName}</p>
+          <p>
+            {inactiveIcon} {details.projectName}
+          </p>
         </div>
     )
   }

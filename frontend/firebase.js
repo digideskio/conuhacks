@@ -19,17 +19,9 @@ module.exports = {
     })
   },
 
-  createTeam: function(url) {
+  createTeam: function(team) {
     return this.authenticate().then(function() {
-      return new Promise(function(resolve, reject) {
-        ref.child('teamUrls').push({url: url}, function(error) {
-          if (error) {
-            reject(error);
-            return;
-          }
-          resolve();
-        });
-      });
+      ref.child('teams').push(team);
     });
   }
 }

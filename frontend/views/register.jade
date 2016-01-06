@@ -10,8 +10,11 @@ block content
               legend Sign Up
           div.adb-container_content
             div.adb-form--field
+              label.adb-label Project Name
+              input.adb-text__full_width(type='text', name='projectName', required='')
+            div.adb-form--field
               label.adb-label Endpoint Url
-              input.adb-text__full_width(type='text', name='url')
+              input.adb-text__full_width(type='text', name='url', required='')
           div.adb-container_footer
             menu.adb-toolbar
-              button.adb-button__primary(type='submit', required='') Sign Up
+              button.adb-button__primary(type='submit') Sign Up

@@ -64,6 +64,6 @@ gulp.task('watch', function() {
   return buildScript('listingApp/main.js', true); // browserify watch for JS changes
 });
 
-gulp.task('default', ['scripts'], function() {
+gulp.task('default', function() {
   return buildScript('listingApp/main.js', false); // this will once run once because we set watch to false
 });

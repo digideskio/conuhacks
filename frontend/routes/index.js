@@ -12,7 +12,8 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', function(req, res) {
-  firebase.createTeam(req.body.url).then(function() {
+  var team = {url: req.body.url, projectName: req.body.projectName, active: false};
+  firebase.createTeam(team).then(function() {
     res.render('success', {title: 'Yay!', message: 'Your team should show up on the listing page shortly!'});
   }, function() {
     res.render('error', {title: 'Something broke', message: 'Oh no :('});
