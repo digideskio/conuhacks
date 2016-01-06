@@ -1,4 +1,5 @@
-var Firebase = require("firebase");
+var Firebase = require("firebase")
+var request = require('request')
 
 // https://webtask.io/docs/model
 module.exports = function (context, req, res) {
@@ -23,8 +24,12 @@ function runJob(context, req, res) {
 
 function updateTeamStatus(teamKey, teamEndpoint) {
   console.log("Updating info for " + teamKey + " from endpoint " + teamEndpoint)
-  //TODO read the endpoint
-  //TODO call update DB method
+  request(teamEndpoint, function (error, response, data) {
+    if (!error && response.statusCode == 200) {
+      console.log(data)
+      //TODO call update DB method with the data returned from the endpoint
+    }
+  })
 }
 
 function initializeFirebase(context) {
