@@ -66,15 +66,15 @@ The response you return should be in the following format:
 
 ## Marketplace (Frontend)
 
-#### Go into 
+Go into 
 
 `cd frontend`
 
-#### Install npm dependencies
+Install npm dependencies
 
 `npm install`
 
-#### Running the project
+Running the project
 
 `npm start`
 
