@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div.adb-layout-dialog
+    div.adb-layout-row
+      form.adb-form(method='post')
+        div.adb-container
+          div.adb-container_header
+            div.adb-container_header--title.adb-container_header--item
+              legend Sign Up
+          div.adb-container_content
+            div.adb-form--field
+              label.adb-label Endpoint Url
+              input.adb-text__full_width(type='text', name='url')
+          div.adb-container_footer
+            menu.adb-toolbar
+              button.adb-button__primary(type='submit', required='') Sign Up
