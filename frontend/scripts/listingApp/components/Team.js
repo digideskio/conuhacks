@@ -6,8 +6,8 @@ import autobind from 'autobind-decorator';
 
 @autobind
 class Team extends React.Component {
-
-  onButtonClick() {
+  redirectToApp() {
+    window.location.assign('/teams/' + this.props.index);
   }
 
   render() {
@@ -23,7 +23,7 @@ class Team extends React.Component {
     }
 
     return (
-        <div className="adb-tile">
+        <div className="adb-tile" onClick={this.redirectToApp}>
           <div className={idClasses}>
             <a href={'/teams/' + this.props.index}>
             <img className="adb-id--img" src={response.projectPicture} />
