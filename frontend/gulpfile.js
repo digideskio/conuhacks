@@ -5,6 +5,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var watchify = require('watchify');
 var notify = require('gulp-notify');
+var nodemon = require('gulp-nodemon');
 
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
@@ -59,6 +60,16 @@ function buildScript(file, watch) {
   // run it once the first time buildScript is called
   return rebundle();
 }
+
+gulp.task('start', ['default'], function() {
+  nodemon({
+    script: 'bin/www'
+    , ext: 'js html'
+    , env: {
+      'FIREBASE_SECRET': '*****SECRET*****'
+    }
+  })
+});
 
 gulp.task('watch', function() {
   return buildScript('listingApp/main.js', true); // browserify watch for JS changes
