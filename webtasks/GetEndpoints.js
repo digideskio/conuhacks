@@ -23,6 +23,8 @@ function runJob(context, req, res) {
 
 function updateTeamStatus(teamKey, teamEndpoint) {
   console.log("Updating info for " + teamKey + " from endpoint " + teamEndpoint)
+  //TODO read the endpoint
+  //TODO call update DB method
 }
 
 function initializeFirebase(context) {
