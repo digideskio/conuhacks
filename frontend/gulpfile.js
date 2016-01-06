@@ -63,11 +63,8 @@ function buildScript(file, watch) {
 
 gulp.task('start', ['default'], function() {
   nodemon({
-    script: 'bin/www'
-    , ext: 'js html'
-    , env: {
-      'FIREBASE_SECRET': '*****SECRET*****'
-    }
+    script: 'bin/www',
+    ext: 'js html'
   })
 });
 

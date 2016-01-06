@@ -35,3 +35,6 @@ node_modules
 
 #igone mac stuff
 .DS_Store
+
+# dotenv
+.env
