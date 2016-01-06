@@ -14,7 +14,7 @@ function runJob(context, req, res) {
         teams.forEach(function(team) {
           updateTeamStatus(team.key(), team.val().url)
         })
-    });
+    })
     if (res) res.status(200).send(teamUrls.toString())
   } catch(err) {
     console.log(err)
@@ -39,8 +39,8 @@ function initializeFirebase(context) {
   var ref = new Firebase(url)
   ref.authWithCustomToken(secret, function(err, data){
     if(err) throw "authentication error!"
-  });
-  return ref;
+  })
+  return ref
 }
 
 runJob({data:{}}, null, null)
