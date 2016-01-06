@@ -85,3 +85,7 @@ Running the project
 or with DEBUG info 
 
 `set DEBUG=myapp:* & npm start`
+
+server is now up and running
+
+`http://localhost:3000/`
