@@ -60,11 +60,10 @@ function buildScript(file, watch) {
   return rebundle();
 }
 
-gulp.task('scripts', function() {
-  return buildScript('listingApp/main.js', false); // this will once run once because we set watch to false
+gulp.task('watch', function() {
+  return buildScript('listingApp/main.js', true); // browserify watch for JS changes
 });
 
-// run 'scripts' task first, then watch for future changes
 gulp.task('default', ['scripts'], function() {
-  return buildScript('listingApp/main.js', true); // browserify watch for JS changes
+  return buildScript('listingApp/main.js', false); // this will once run once because we set watch to false
 });
