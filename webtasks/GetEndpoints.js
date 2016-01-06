@@ -1,5 +1,6 @@
 var Firebase = require("firebase")
 var request = require('request')
+var rootRef
 
 // https://webtask.io/docs/model
 module.exports = function (context, req, res) {
@@ -7,13 +8,11 @@ module.exports = function (context, req, res) {
 }
 
 function runJob(context, req, res) {
+  rootRef = initializeFirebase(context).child('teams')
   try {
-    var rootRef = initializeFirebase(context)
     console.log('reading team urls ...')
-    rootRef.child('teamUrls').once('value', function(teams) {
-        teams.forEach(function(team) {
-          updateTeamStatus(team.key(), team.val().url)
-        })
+    rootRef.once('value', function(teams) {
+        teams.forEach(updateTeamStatus)
     })
     if (res) res.status(200).send(teamUrls.toString())
   } catch(err) {
@@ -22,14 +21,30 @@ function runJob(context, req, res) {
   }
 }
 
-function updateTeamStatus(teamKey, teamEndpoint) {
-  console.log("Updating info for " + teamKey + " from endpoint " + teamEndpoint)
-  request(teamEndpoint, function (error, response, data) {
+function updateTeamStatus(teamObj) {
+  var team = teamObj.val()
+  console.log("Updating info for " + teamObj.key() + " from endpoint " + team.url)
+  request(team.url, function (error, response, data) {
     if (!error && response.statusCode == 200) {
-      console.log(data)
-      //TODO call update DB method with the data returned from the endpoint
+      console.log("succesfully read data from endpoint :" + data)
+      team.data = parseJSON(data)
+    } else {
+      console.log("got an error when calling endpoint from " + teamObj.key() + "with response code " + response.code)
+      console.log(error)
+      team.data = {"error": response.statusCode}
     }
+    rootRef.child(teamObj.key()).update(team, function(){
+      console.log("updated data for " + teamObj.key())
+    })
   })
+}
+
+function parseJSON(data){
+  try {
+    return JSON.parse(data)
+  } catch(err) {
+    return {"error":"invalid json"}
+  }
 }
 
 function initializeFirebase(context) {
@@ -43,4 +58,7 @@ function initializeFirebase(context) {
   return ref
 }
 
-runJob({data:{}}, null, null)
+if(process.env.CONUHACKS_LOCAL === "1"){
+  console.log("running in local mode")
+  runJob({data:{}}, null, null)
+}
