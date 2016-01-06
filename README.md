@@ -16,6 +16,8 @@ Visit https://conuhacks.appdirectondemand.com/register and follow the instructio
 
 **You will receive a secret key. Don't lose it and keep it to yourself!**
 
+Want to set up an endpoint in a minute or less? [Learn the magic of webtask.io](webtask.md)!
+
 ## Response
 
 The server will make a `GET` request to your URI and expect a response with a status code of `200 OK`, and a content type of `application/json`.
