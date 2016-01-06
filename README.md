@@ -62,4 +62,22 @@ The response you return should be in the following format:
 ```
 
 - Images may be in any web compatible format. Animated .gif anyone? :)
-- Please, nothing offensive. Remember the Major League Hacking [code of conduct](http://static.mlh.io/docs/mlh-code-of-conduct.pdf).
+- Please, nothing offensive. Remember the Major League Hacking [code of conduct](http://static.mlh.io/docs/mlh-code-of-conduct.pdf
+
+## Marketplace (Frontend)
+
+#### Go into 
+
+`cd frontend`
+
+#### Install npm dependencies
+
+`npm install`
+
+#### Running the project
+
+`npm start`
+
+or with DEBUG info 
+
+`set DEBUG=myapp:* & npm start`
