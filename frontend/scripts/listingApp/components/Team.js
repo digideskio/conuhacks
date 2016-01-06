@@ -8,13 +8,14 @@ import h from '../helpers';
 import autobind from 'autobind-decorator';
 
 @autobind
-class Fish extends React.Component {
+class Team extends React.Component {
   redirectToApp() {
     window.location.assign('/teams/' + this.props.index);
   }
 
   render() {
     var details = this.props.details;
+    var response = details.data || {};
 
     var idClasses = 'adb-id adb-id__logo adb-id__sq_large adb-id__editable adb-myapp--image adb-id__launchable';
     var inactiveIcon = '';
@@ -27,10 +28,10 @@ class Fish extends React.Component {
     return (
         <div className="adb-tile adb-myapp" onClick={this.redirectToApp}>
           <div className={idClasses}>
-            <img className="adb-id--img" src={details.projectPicture} />
+            <img className="adb-id--img" src={response.projectPicture} />
           </div>
           <p>
-            {inactiveIcon} {details.projectName}
+            {inactiveIcon} {response.projectName}
           </p>
         </div>
     )
@@ -38,4 +39,4 @@ class Fish extends React.Component {
 };
 
 
-export default Fish;
+export default Team;
