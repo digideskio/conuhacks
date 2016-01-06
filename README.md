@@ -80,7 +80,7 @@ Install npm dependencies
 
 `npm install`
 
-Create a the `fronend/.env` file and add the FIREBASE_SECRET variable
+Create a the `frontend/.env` file and add the FIREBASE_SECRET variable
 
 `FIREBASE_SECRET={YOUR_FIREBASE_SECRET}`
 
