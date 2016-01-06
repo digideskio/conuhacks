@@ -68,6 +68,8 @@ The response you return should be in the following format:
 
 ## Marketplace (Frontend)
 
+####Express server
+
 Here is the how to run the marketplace
 
 Go into 
@@ -89,3 +91,23 @@ or with DEBUG info
 server is now up and running
 
 `http://localhost:3000/`
+
+#### React listing app
+
+Here is the how rebuild react listing app
+
+Go into 
+
+`cd frontend`
+
+Install npm dependencies
+
+`npm install`
+
+Rebuilding the app
+
+`gulp`
+
+Watching the source and rebuild
+
+`gulp watch`
