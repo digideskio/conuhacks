@@ -68,11 +68,11 @@ The response you return should be in the following format:
 
 ## Marketplace (Frontend)
 
-####Express server
+### Express server
 
 Here is the how to run the marketplace
 
-Go into 
+Go into
 
 `cd frontend`
 
@@ -80,11 +80,15 @@ Install npm dependencies
 
 `npm install`
 
+Set your firebase secret
+
+`export FIREBASE_SECRET={YOUR_FIREBASE_SECRET}`
+
 Running the project
 
 `npm start`
 
-or with DEBUG info 
+or with DEBUG info
 
 `set DEBUG=myapp:* & npm start`
 
@@ -96,7 +100,7 @@ server is now up and running
 
 Here is the how rebuild react listing app
 
-Go into 
+Go into
 
 `cd frontend`
 
