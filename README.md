@@ -80,9 +80,9 @@ Install npm dependencies
 
 `npm install`
 
-Set your firebase secret
+Create a the `fronend/.env` file and add the FIREBASE_SECRET variable
 
-`export FIREBASE_SECRET={YOUR_FIREBASE_SECRET}`
+`FIREBASE_SECRET={YOUR_FIREBASE_SECRET}`
 
 Running the project
 
