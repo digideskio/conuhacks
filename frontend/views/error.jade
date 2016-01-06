@@ -1,6 +1,11 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  div.adb-layout-dialog
+    div.adb-layout-row.adb-layout-section
+      div.adb-placeholder.adb-placeholder__page
+        div.adb-placeholder--content
+          figure.adb-placeholder--image
+            i.adb-icon__error
+          h2= title
+          p= message
