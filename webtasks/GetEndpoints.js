@@ -1,5 +1,6 @@
 var Firebase = require("firebase")
 var request = require('request')
+var rootRef
 
 // https://webtask.io/docs/model
 module.exports = function (context, req, res) {
@@ -7,13 +8,11 @@ module.exports = function (context, req, res) {
 }
 
 function runJob(context, req, res) {
+  rootRef = initializeFirebase(context).child('teams')
   try {
-    var rootRef = initializeFirebase(context)
     console.log('reading team urls ...')
-    rootRef.child('teamUrls').once('value', function(teams) {
-        teams.forEach(function(team) {
-          updateTeamStatus(team.key(), team.val().url, rootRef.child("teams"))
-        })
+    rootRef.once('value', function(teams) {
+        teams.forEach(updateTeamStatus)
     })
     if (res) res.status(200).send(teamUrls.toString())
   } catch(err) {
@@ -22,20 +21,30 @@ function runJob(context, req, res) {
   }
 }
 
-function updateTeamStatus(teamKey, teamEndpoint, dbRef) {
-  console.log("Updating info for " + teamKey + " from endpoint " + teamEndpoint)
-  request(teamEndpoint, function (error, response, data) {
+function updateTeamStatus(teamObj) {
+  var team = teamObj.val()
+  console.log("Updating info for " + teamObj.key() + " from endpoint " + team.url)
+  request(team.url, function (error, response, data) {
     if (!error && response.statusCode == 200) {
-      console.log(data)
-      dbRef.child(teamKey).set(JSON.parse(data), function(){
-        console.log("successfully updated data for " + teamKey)
-      })
+      console.log("succesfully read data from endpoint :" + data)
+      team.data = parseJSON(data)
     } else {
-      console.log("got an error when calling endpoint from " + teamKey + "with response code " + response.code)
+      console.log("got an error when calling endpoint from " + teamObj.key() + "with response code " + response.code)
       console.log(error)
-      dbRef.child(teamKey).set({"error": response.statusCode})
+      team.data = {"error": response.statusCode}
     }
+    rootRef.child(teamObj.key()).update(team, function(){
+      console.log("updated data for " + teamObj.key())
+    })
   })
+}
+
+function parseJSON(data){
+  try {
+    return JSON.parse(data)
+  } catch(err) {
+    return {"error":"invalid json"}
+  }
 }
 
 function initializeFirebase(context) {
