@@ -9,8 +9,8 @@ import autobind from 'autobind-decorator';
 
 @autobind
 class Fish extends React.Component {
-
-  onButtonClick() {
+  redirectToApp() {
+    window.location.assign('/teams/' + this.props.index);
   }
 
   render() {
@@ -25,7 +25,7 @@ class Fish extends React.Component {
     }
 
     return (
-        <div className="adb-tile adb-myapp">
+        <div className="adb-tile adb-myapp" onClick={this.redirectToApp}>
           <div className={idClasses}>
             <img className="adb-id--img" src={details.projectPicture} />
           </div>

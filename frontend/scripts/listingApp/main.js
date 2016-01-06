@@ -5,14 +5,13 @@ import { createHistory } from 'history';
 
 import NotFound from './components/NotFound';
 import App from './components/App';
-
-/*
-  Routes
-*/
+import Profile from './components/Profile';
 
 var routes = (
   <Router history={createHistory()}>
-    <Route path="/" component={App}/>
+    <Route path="/" component={App}>
+      <Route path="teams/:teamId" component={Profile} />
+    </Route>
     <Route path="*" component={NotFound}/>
   </Router>
 )
