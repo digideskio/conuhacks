@@ -28,16 +28,26 @@ The response you return should be in the following format:
 {
 	// These two fields are mandatory. The rest is optional!
 	teamName: "Your team name",
+
+	// Cheese!
+	teamPicture: "http://imgur.com/yourteam.jpg",
+
 	projectName: "Your project name",     //
 
 	// Make it square ideally
 	projectPicture: "http://imgur.com/yourproject.jpg",
 
-	// Cheese!
-	teamPicture: "http://imgur.com/yourteam.jpg",
+	projectDescription: "Lorem ipsum dolor sit amet, te delectus pertinax referrentur qui. Utamur singulis disputando duo et, est ad debet graeco ancillae, cu appareat quaestio cum. Et eos modus primis reformidans, eum an fastidii fabellas. Euripidis vulputate te sea, ea nec vivendum postulant. Ea eam erant saperet, et veri liber populo vis. Et sonet mollis docendi duo."
 
 	// We fully understand that this URL will be broken most of the time :)
 	projectUrl: "http://yourproject.com",
+
+	//your stack
+	technology: [
+		"React",
+		"Node.js",
+		"MongoDB"
+	]
 
 	// Fill this array up as needed
 	members: [{
