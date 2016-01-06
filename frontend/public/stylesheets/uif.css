@@ -5506,7 +5506,7 @@ button {
   *display: inline;
   border-right: 1px solid #1b1917;
   float: left;
-  height: 49px; }
+  height: 70px; }
   .adb-primary_nav--item:first-child, .adb-primary_nav--item.adb-primaray__logo {
     border-left: 1px solid #1b1917; }
   .adb-primary_nav--item.adb-primary_nav--item__right {
@@ -5568,8 +5568,8 @@ button {
   transition-duration: 0.1s;
   -webkit-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
-  height: 49px;
-  line-height: 29px; }
+  height: 70px;
+  line-height: 50px; }
   .adb-primary_nav--link:hover, .adb-primary_nav--link:active, .adb-primary_nav--link:focus {
     text-decoration: none; }
   .adb-primary_nav--link:hover, .adb-primary_nav--link:focus {
@@ -5594,9 +5594,10 @@ button {
   text-indent: 110%;
   white-space: nowrap;
   overflow: hidden;
-  background: transparent url("../images/logo_mark-small.png") no-repeat 50% 50%;
-  width: 64px;
-  height: 29px;
+  background: transparent url("../images/logo.png") no-repeat 50% 50%;
+  width: 200px;
+  height: 50px;
+  background-size: 200px;
   display: block; }
 
 .adb-primary_nav--user {
