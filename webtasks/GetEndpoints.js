@@ -9,14 +9,20 @@ function runJob(context, req, res) {
   try {
     var rootRef = initializeFirebase(context)
     console.log('reading team urls ...')
-    var teamUrls = rootRef.child('teamUrls').on('value', function(dataSnapshot) {
-        console.log(dataSnapshot.val())
+    rootRef.child('teamUrls').once('value', function(teams) {
+        teams.forEach(function(team) {
+          updateTeamStatus(team.key(), team.val().url)
+        })
     });
     if (res) res.status(200).send(teamUrls.toString())
   } catch(err) {
     console.log(err)
     if (res) res.status(500).send('exception occurred during script execution')
   }
+}
+
+function updateTeamStatus(teamKey, teamEndpoint) {
+  console.log("Updating info for " + teamKey + " from endpoint " + teamEndpoint)
 }
 
 function initializeFirebase(context) {
