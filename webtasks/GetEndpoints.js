@@ -13,6 +13,7 @@ function runJob(context, req, res) {
     rootRef.child('teamUrls').once('value', function(teams) {
         teams.forEach(function(team) {
           updateTeamStatus(team.key(), team.val().url)
+
         })
     })
     if (res) res.status(200).send(teamUrls.toString())
@@ -22,12 +23,14 @@ function runJob(context, req, res) {
   }
 }
 
-function updateTeamStatus(teamKey, teamEndpoint) {
+function updateTeamStatus(teamKey, teamEndpoint, dbRef) {
   console.log("Updating info for " + teamKey + " from endpoint " + teamEndpoint)
   request(teamEndpoint, function (error, response, data) {
     if (!error && response.statusCode == 200) {
       console.log(data)
-      //TODO call update DB method with the data returned from the endpoint
+      dbRef.set(teamKey, data)
+    } else {
+      dbRef.set(teamKey, {"error": response.statusCode})
     }
   })
 }
@@ -43,4 +46,6 @@ function initializeFirebase(context) {
   return ref
 }
 
-runJob({data:{}}, null, null)
+if(process.env.CONUHACKS_LOCAL === 1){
+  runJob({data:{}}, null, null)
+}
