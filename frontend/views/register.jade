@@ -14,7 +14,7 @@ block content
               input.adb-text__full_width(type='text', name='projectName', required='')
             div.adb-form--field
               label.adb-label Endpoint Url
-              input.adb-text__full_width(type='text', name='url', required='')
+              input.adb-text__full_width(type='text', name='url', required='', pattern='@^(https?|ftp)://[^\s/$.?#].[^\s]*$@iS')
           div.adb-container_footer
             menu.adb-toolbar
               button.adb-button__primary(type='submit') Sign Up
