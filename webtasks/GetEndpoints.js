@@ -14,7 +14,7 @@ function runJob(context, req, res) {
     rootRef.once('value', function(teams) {
         teams.forEach(updateTeamStatus)
     })
-    if (res) res.status(200).send(teamUrls.toString())
+    if (res) res.status(200).send('all done')
   } catch(err) {
     console.log(err)
     if (res) res.status(500).send('exception occurred during script execution')
