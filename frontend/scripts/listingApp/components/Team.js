@@ -8,7 +8,7 @@ import h from '../helpers';
 import autobind from 'autobind-decorator';
 
 @autobind
-class Fish extends React.Component {
+class Team extends React.Component {
 
   onButtonClick() {
   }
