@@ -10,7 +10,7 @@ module.exports = {
     return new Promise(function(resolve, reject) {
       ref.authWithCustomToken(token, function(error, authData) {
         if (error) {
-          reject();
+          reject(error);
           return;
         }
 
@@ -24,7 +24,7 @@ module.exports = {
       return new Promise(function(resolve, reject) {
         ref.child('teamUrls').push({url: url}, function(error) {
           if (error) {
-            reject();
+            reject(error);
             return;
           }
           resolve();
