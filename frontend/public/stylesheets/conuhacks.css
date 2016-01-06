@@ -1,0 +1,23 @@
+.conuhacks-page {
+	padding: 2em;
+}
+.biglogo {
+	width: 50%;
+}
+
+/* big ass squares on listing */
+
+.adb-id__sq_xlarge {
+	width: 300px;
+	font-size: 300px;
+}
+
+.adb-id__logo:before {
+	border: none 0;
+	border-radius: 0;
+	background: none !important;
+}
+.adb-tile, .adb-id__logo {
+	background: none !important;
+	box-shadow: none;
+}

@@ -1,7 +1,4 @@
-/*
-  Fish
-  <Fish />
-*/
+// Team component on the listing page
 
 import React from 'react';
 import h from '../helpers';
@@ -17,7 +14,7 @@ class Team extends React.Component {
     var details = this.props.details;
     var response = details.data || {};
 
-    var idClasses = 'adb-id adb-id__logo adb-id__sq_large adb-id__editable adb-myapp--image adb-id__launchable';
+    var idClasses = 'adb-id adb-id__logo adb-id__sq_xlarge';
     var inactiveIcon = '';
 
     if (!details.active) {
@@ -26,13 +23,15 @@ class Team extends React.Component {
     }
 
     return (
-        <div className="adb-tile adb-myapp">
+        <div className="adb-tile">
           <div className={idClasses}>
+            <a href={'/teams/' + this.props.index}>
             <img className="adb-id--img" src={response.projectPicture} />
+            </a>
           </div>
-          <p>
+          <h3>
             {inactiveIcon} {response.projectName}
-          </p>
+          </h3>
         </div>
     )
   }
