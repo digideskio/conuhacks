@@ -3,15 +3,14 @@ html(lang="en")
   include head
   body
     div.adb-page
-      header.adb-page.header
-        nav.adb-primary_nav
-          ul.adb-primary_nav--items.adb-layout-default
-            li.adb-primary_nav--item.adb-primary__logo
-              a.adb-primary_nav--link(href='http://base.appdirect.com/')
-                spam.adb-primary_nav--logo Conuhacks Marketplace
-            li.adb-primary_nav--item
-              a.adb-primary_nav--link(href='/') Listing
-            li.adb-primary_nav--item
-              a.adb-primary_nav--link(href='/register') Register
-      div.adb-page_content
-        block content
+      div.conuhacks-page
+        header.adb-page.header
+          center
+            a.adb-primary__logo(href='/')
+              img.biglogo(src='images/logo_appdirect.png')
+
+        div.adb-page_content
+          block content
+
+        div.adb-page_footer
+          a.adb-button.adb-button__xlarge.adb-button__emphasis(href='/register') Register your team!

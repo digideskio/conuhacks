@@ -15,7 +15,6 @@ var base = Rebase.createClass('https://boiling-fire-9252.firebaseio.com/');
 
 @autobind
 class App extends React.Component {
-
   constructor() {
     super();
 
