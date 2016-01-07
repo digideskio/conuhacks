@@ -17,15 +17,21 @@ function runJob(context, cb) {
 }
 
 function updateTeamStatus(teamObj) {
+  var teamId = teamObj.key()
   var team = teamObj.val()
-  console.log("Updating info for " + teamObj.key() + " from endpoint " + team.url)
+
+  console.log("reading data for team id '" + teamId + "' from endpoint " + team.url)
+
   request(team.url, function (error, response, data) {
-    if (!error && response.statusCode == 200) {
-      console.log("succesfully read data from endpoint :" + data)
+    var statusCode = response ? response.statusCode : null
+    if (!error && statusCode == 200) {
       var parsedData = parseJSON(data)
       if(parsedData.error){
         team.active = false
         team.lastError = parsedData.error
+      } else if (response.headers['X-AppDirect-Key'] !== team.secretKey) {
+        team.active = false
+        team.lastError = {"error": "invalid secret key", "timestamp": new Date()}
       } else {
         team.active = true
         team.data = parsedData
@@ -33,10 +39,8 @@ function updateTeamStatus(teamObj) {
         team.successCount = team.successCount + 1
       }
     } else {
-      console.log("got an error when calling endpoint from " + teamObj.key() + "with response code " + response.code)
-      console.log(error)
       team.active = false
-      team.lastError = {"error": response.statusCode, "timestamp": new Date()}
+      team.lastError = {"error": statusCode, "timestamp": new Date()}
     }
     rootRef.child(teamObj.key()).update(team, function(){
       console.log("updated data for " + teamObj.key())
