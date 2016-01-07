@@ -7,6 +7,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET home page. */
+router.get('/teams/:id', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
 router.get('/register', function(req, res, next) {
 	res.render('register', {title: 'AppDirect | Register'});
 });

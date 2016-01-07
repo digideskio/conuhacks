@@ -9,9 +9,8 @@ import Profile from './components/Profile';
 
 var routes = (
   <Router history={createHistory()}>
-    <Route path="/" component={App}>
-      <Route path="teams/:teamId" component={Profile} />
-    </Route>
+    <Route path="/" component={App} />
+    <Route path="teams/:teamId" component={Profile} />
     <Route path="*" component={NotFound}/>
   </Router>
 )

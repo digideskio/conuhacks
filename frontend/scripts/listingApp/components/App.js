@@ -19,7 +19,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      teams : {},
+      teams : {}
     }
   }
 
@@ -28,10 +28,6 @@ class App extends React.Component {
       context : this,
       state : 'teams'
     });
-  }
-
-  renderTeam(key){
-    return <Team key={key} index={key} details={this.state.teams[key]} addToOrder={this.addToOrder}/>
   }
 
   render() {
@@ -43,6 +39,10 @@ class App extends React.Component {
           </div>
       </div>
     )
+  }
+
+  renderTeam(key){
+    return <Team key={key} index={key} details={this.state.teams[key]} addToOrder={this.addToOrder}/>
   }
 };
 
