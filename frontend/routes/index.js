@@ -39,4 +39,8 @@ router.post('/register', function(req, res) {
   });
 });
 
+router.get('/check', function(req, res) {
+  res.status(200).end();
+});
+
 module.exports = router;
