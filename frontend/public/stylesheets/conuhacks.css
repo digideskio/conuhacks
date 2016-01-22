@@ -29,3 +29,9 @@
 	background: none !important;
 	box-shadow: none;
 }
+
+.secret {
+	font-family: monospace;
+	font-size: 100%;
+	text-align: center;
+}

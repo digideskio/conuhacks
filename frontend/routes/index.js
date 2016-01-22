@@ -1,6 +1,7 @@
 var express = require('express');
 var firebase = require('../firebase');
 var router = express.Router();
+var uuid = require('node-uuid');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,15 +18,22 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', function(req, res) {
+  var secretKey = uuid.v4();
+
   var team = {
     url: req.body.url,
     projectName: req.body.projectName,
     active: false,
-    successCount: 0
+    successCount: 0,
+    secretKey: secretKey
   };
 
   firebase.createTeam(team).then(function() {
-    res.render('success', {title: 'Yay!', message: 'Your team should show up on the listing page shortly!'});
+    res.render('success', {
+      title: 'Yay!',
+      message: 'Your team should show up on the listing page shortly!',
+      secretKey: secretKey
+    });
   }, function() {
     res.render('error', {title: 'Something broke', message: 'Oh no :('});
   });
