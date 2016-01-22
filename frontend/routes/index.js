@@ -2,6 +2,7 @@ var express = require('express');
 var firebase = require('../firebase');
 var router = express.Router();
 var uuid = require('node-uuid');
+var recaptcha = require('../recaptcha');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -28,7 +29,9 @@ router.post('/register', function(req, res) {
     secretKey: secretKey
   };
 
-  firebase.createTeam(team).then(function() {
+  recaptcha(req.body['g-recaptcha-response']).then(function() {
+    return firebase.createTeam(team);
+  }).then(function() {
     res.render('success', {
       title: 'Yay!',
       message: 'Your team should show up on the listing page shortly!',

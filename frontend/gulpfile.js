@@ -68,6 +68,14 @@ gulp.task('start', ['default'], function() {
   })
 });
 
+gulp.task('debug', ['default'], function() {
+  nodemon({
+    exec: 'node-inspector --web-port=3001 & node --debug',
+    script: 'bin/www',
+    ext: 'js html'
+  });
+});
+
 gulp.task('watch', function() {
   return buildScript('listingApp/main.js', true); // browserify watch for JS changes
 });

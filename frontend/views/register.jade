@@ -1,5 +1,9 @@
 extends layout
 
+block extraHeader
+  script(src='https://www.google.com/recaptcha/api.js')
+  script(src='/js/register.js')
+
 block content
   div.adb-layout-dialog
     div.adb-layout-row
@@ -15,6 +19,8 @@ block content
             div.adb-form--field
               label.adb-label Endpoint Url
               input.adb-text__full_width(type='text', name='url', required='', pattern='https?://.+')
+            div.adb-form--field
+              div.g-recaptcha(data-sitekey='6LczEhYTAAAAAKUc0Kr-esY2mPtTFqB3RrvYGQRm')
           div.adb-container_footer
             menu.adb-toolbar
               button.adb-button__primary(type='submit') Sign Up
