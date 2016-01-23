@@ -17,11 +17,12 @@ class Team extends React.Component {
     var idClasses = 'adb-id adb-id__logo adb-id__sq_xlarge';
     var inactiveIcon = '';
     var placeholder = '';
+    var error = details.lastError ? details.lastError.error : 'We haven\'t called your endpoint yet ¯\\_(ツ)_/¯';
 
 
     if (!details.active) {
       idClasses += ' adb-is-disabled';
-      inactiveIcon = <i className="adb-icon__error adb-icon_alert adb-icon_alert__error" title={details.lastError.error}></i>
+      inactiveIcon = <i className="adb-icon__error adb-icon_alert adb-icon_alert__error" title={error}></i>
       placeholder = <i className="adb-id--placeholder adb-icon__star"></i>;
     }
 
