@@ -23,7 +23,9 @@ router.post('/register', function(req, res) {
 
   var team = {
     url: req.body.url,
-    projectName: req.body.projectName,
+    data: {
+      projectName: req.body.projectName
+    },
     active: false,
     successCount: 0,
     secretKey: secretKey
