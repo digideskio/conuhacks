@@ -25,14 +25,19 @@ function updateTeamStatus(teamObj) {
   request(team.url, function (error, response, data) {
     var statusCode = response ? response.statusCode : null
     if (!error && statusCode == 200) {
+      console.log(teamObj.val()['secretKey'])
+      console.log('header='+JSON.stringify(response.headers))
       var parsedData = parseJSON(data)
       if(parsedData.error){
+        console.log(teamId + ' is NOT active')
         team.active = false
         team.lastError = parsedData.error
-      } else if (response.headers['X-AppDirect-Key'] !== team.secretKey) {
+      } else if (response.headers['x-appdirect-secret'] !== team.secretKey) {
+        console.log(teamId + ' is NOT active')
         team.active = false
         team.lastError = {"error": "invalid secret key", "timestamp": new Date()}
       } else {
+        console.log(teamId + ' is active')
         team.active = true
         team.data = parsedData
         team.lastSuccessfulUpdate = new Date()
