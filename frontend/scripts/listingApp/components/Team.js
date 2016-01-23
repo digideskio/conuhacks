@@ -16,17 +16,21 @@ class Team extends React.Component {
 
     var idClasses = 'adb-id adb-id__logo adb-id__sq_xlarge';
     var inactiveIcon = '';
+    var placeholder = '';
+
 
     if (!details.active) {
       idClasses += ' adb-is-disabled';
       inactiveIcon = <i className="adb-icon__error adb-icon_alert adb-icon_alert__error"></i>
+      placeholder = <i className="adb-id--placeholder adb-icon__star"></i>;
     }
 
     return (
         <div className="adb-tile" onClick={this.redirectToApp}>
           <div className={idClasses}>
             <a href={'/teams/' + this.props.index}>
-            <img className="adb-id--img" src={response.projectPicture} />
+              <img className="adb-id--img" src={response.projectPicture} />
+              {placeholder}
             </a>
           </div>
           <h3>
