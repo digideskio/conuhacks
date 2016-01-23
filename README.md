@@ -64,7 +64,7 @@ The response you return should be in the following format:
 ```
 
 - Images may be in any web compatible format. Animated .gif anyone? :)
-- Please, nothing offensive. Remember the Major League Hacking [code of conduct](http://static.mlh.io/docs/mlh-code-of-conduct.pdf
+- Please, nothing offensive. Remember the Major League Hacking [code of conduct](http://static.mlh.io/docs/mlh-code-of-conduct.pdf)
 
 ## Marketplace (Frontend)
 
