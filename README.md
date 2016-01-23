@@ -49,7 +49,7 @@ The response you return should be in the following format:
 		"React",
 		"Node.js",
 		"MongoDB"
-	]
+	],
 
 	// Fill this array up as needed
 	members: [{
