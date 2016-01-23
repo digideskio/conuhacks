@@ -21,7 +21,7 @@ class Team extends React.Component {
 
     if (!details.active) {
       idClasses += ' adb-is-disabled';
-      inactiveIcon = <i className="adb-icon__error adb-icon_alert adb-icon_alert__error"></i>
+      inactiveIcon = <i className="adb-icon__error adb-icon_alert adb-icon_alert__error" title={details.lastError.error}></i>
       placeholder = <i className="adb-id--placeholder adb-icon__star"></i>;
     }
 
