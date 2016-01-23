@@ -32,7 +32,7 @@ function updateTeamStatus(teamObj) {
         console.log(teamId + ' is NOT active')
         team.active = false
         team.lastError = parsedData.error
-      } else if (response.headers['x-appdirect-secret'] !== team.secretKey) {
+      } else if (response.headers['x-appdirect-secret'] !== team.secretKey && response.headers['X-AppDirect-Secret'] !== team.secretKey && response.headers['X-APPDIRECT-SECRET'] !== team.secretKey) {
         console.log(teamId + ' is NOT active')
         team.active = false
         team.lastError = {"error": "invalid secret key", "timestamp": new Date()}
